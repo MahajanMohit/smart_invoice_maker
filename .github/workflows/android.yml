@@ -43,6 +43,11 @@ jobs:
       - name: Sync Capacitor
         run: npx cap sync android
 
+      - name: Fix Kotlin Duplicate Classes
+        run: |
+          # This forces all Kotlin dependencies to use the same version to avoid duplicate class errors
+          sed -i '/allprojects {/a \    configurations.all {\n        resolutionStrategy {\n            force "org.jetbrains.kotlin:kotlin-stdlib:1.8.22"\n            force "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22"\n            force "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22"\n        }\n    }' android/build.gradle
+
       - name: Build APK
         run: |
           cd android
