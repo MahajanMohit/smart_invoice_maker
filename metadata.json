@@ -1,0 +1,5 @@
+{
+  "name": "Smart Invoice Pro",
+  "description": "Automated invoice generation with barcode scanning and AI-powered sales summaries.",
+  "requestFramePermissions": ["camera"]
+}
